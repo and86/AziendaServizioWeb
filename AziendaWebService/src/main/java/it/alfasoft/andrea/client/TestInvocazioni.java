@@ -16,7 +16,12 @@ public class TestInvocazioni {
 		Response risposta=invocazione.richiestaBuste()
 					.invoke();
 
+		List<BustaPaga> buste=risposta.readEntity(new GenericType<List<BustaPaga>>(){});
 		
+		for(BustaPaga b:buste){
+			System.out.println(b.getDipendente()+" "+b.getDataEmissione()+" "+b.getTotale());
+		}
+							
 
 }
 }

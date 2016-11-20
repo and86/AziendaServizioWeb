@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-11-20T20:33:56 -->
+<!-- 2016-11-20T21:01:37 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFattura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6e7f9611-621f-4511-a248-9ba0c2bdfa72">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="FatturaDataSet" uuid="736ffaeb-e76e-4612-8110-641279caac13">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
 	<parameter name="HIBERNATE_SESSION" class="org.hibernate.Session" isForPrompting="false"/>
 	<parameter name="HIBERNATE_FILTER_COLLECTION" class="java.lang.Object" isForPrompting="false"/>
 	<queryString>
