@@ -3,11 +3,13 @@ package it.alfasoft.andrea.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.alfasoft.andrea.bean.FiltriFattura;
 import it.alfasoft.andrea.model.Fattura;
 import it.alfasoft.andrea.service.Servizio;
 
 
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,8 +19,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import oracle.jdbc.proxy.annotation.Post;
 
 
 @Path("fattura")
@@ -45,6 +45,15 @@ public class RisorsaFattura {
 		s.registraFattura(f);
 		return Response.status(Status.CREATED).entity(f).build();
 		
+	}
+	
+	@GET
+	@Path("/fatturaProva")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getContextParameter(@BeanParam FiltriFattura ff){
+		
+//		ff.setAnno(2016);
+		return ff.getDateInizio()+ " "+ff.getDateFine();
 	}
 
 	
