@@ -11,6 +11,10 @@ import javax.ws.rs.core.Response;
 public class TestInvocazioni {
 
 	public static void main(String[] args) {
+		
+		Invocazioni invocazione=new Invocazioni();
+		Response risposta=invocazione.richiestaBuste()
+					.invoke();
 
 		
 

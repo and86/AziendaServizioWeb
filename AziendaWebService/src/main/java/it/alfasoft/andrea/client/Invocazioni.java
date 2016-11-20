@@ -8,17 +8,13 @@ import javax.ws.rs.client.WebTarget;
 public class Invocazioni {
 
 
-	private Client buste=ClientBuilder.newClient();
-	private WebTarget baseTarget=buste.target("http://localhost:8081/AziendaJSF/alfasoft");
-	private WebTarget busTarget=baseTarget.path("/bustepaga");
-	private WebTarget listaBusteTarget=busTarget.path("/lista");
-	
+	private Client buste= ClientBuilder.newClient();
+	private WebTarget baseTarget= buste.target("http://localhost:8081/AziendaJSF/alfasoft/bustepaga/lista");
 	public Invocazioni() {
-		
 	}
 	
-	public Invocation getTutteBuste(){
-		
-		return busTarget.request().buildGet();
+	public Invocation richiestaBuste(){
+		return baseTarget.request().buildGet();
 	}
+	
 }

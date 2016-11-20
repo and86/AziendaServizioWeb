@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-11-20T19:00:28 -->
+<!-- 2016-11-20T20:33:56 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFattura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6e7f9611-621f-4511-a248-9ba0c2bdfa72">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<subDataset name="FatturaDataSet" uuid="ff256e07-e5d2-4425-8286-c712b7a469bc">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-		<field name="emissione" class="java.util.Date">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="totale" class="java.lang.Double"/>
-		<field name="codice" class="java.lang.String"/>
-	</subDataset>
 	<parameter name="HIBERNATE_SESSION" class="org.hibernate.Session" isForPrompting="false"/>
 	<parameter name="HIBERNATE_FILTER_COLLECTION" class="java.lang.Object" isForPrompting="false"/>
 	<queryString>
@@ -77,15 +66,15 @@
 				<text><![CDATA[Codice Fattura: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="15" width="91" height="21" isRemoveLineWhenBlank="true" uuid="92a60192-8c03-4250-8094-6c8bd9074156"/>
-				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="140" y="51" width="91" height="21" uuid="898049d7-158b-4444-bf70-547f5df76f9e"/>
-				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="140" y="80" width="91" height="21" uuid="4da4861e-1174-40d1-9622-46bb75c2f83c"/>
+				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="51" width="91" height="21" uuid="24593b35-689f-4270-bdaf-0ff78630ab2c"/>
+				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="20" width="91" height="21" uuid="1cdb1262-6e21-43e9-aed3-e8ae078c28a3"/>
 				<textFieldExpression><![CDATA["Campo di Testo"]]></textFieldExpression>
 			</textField>
 		</band>
