@@ -5,23 +5,16 @@ import java.util.List;
 import it.alfasoft.andrea.model.BustaPaga;
 import it.alfasoft.andrea.model.Dipendente;
 
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
-public class TestInvocazioni {
+public class TestInvocazioni extends Invocazione {
 
-	public static void main(String[] args) {
-		
-		Invocazioni invocazione=new Invocazioni();
-		Response risposta=invocazione.richiestaBuste()
-					.invoke();
-
-		List<BustaPaga> buste=risposta.readEntity(new GenericType<List<BustaPaga>>(){});
-		
-		for(BustaPaga b:buste){
-			System.out.println(b.getDipendente()+" "+b.getDataEmissione()+" "+b.getTotale());
-		}
-							
-
-}
+	@Override
+	Invocation getTutteBustePaga() {
+		// TODO Auto-generated method stub
+		return baseTarget.request().buildGet();
+	}
 }

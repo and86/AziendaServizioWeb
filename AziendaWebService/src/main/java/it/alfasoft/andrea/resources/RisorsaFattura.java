@@ -54,7 +54,7 @@ public class RisorsaFattura {
 	
 	@GET
 	@Path("/ricerca")
-	@Produces(MediaType.TEXT_PLAIN)
+//	@Produces(MediaType.TEXT_PLAIN)
 	public List<Fattura> leggiFatturaConDate(@QueryParam("dateInizio") String dateInizio,
 			 								@QueryParam("dateFine" )String dateFine) throws ParseException{
 		
