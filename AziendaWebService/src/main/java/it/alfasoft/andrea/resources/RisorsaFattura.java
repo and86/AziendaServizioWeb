@@ -35,6 +35,7 @@ public class RisorsaFattura {
 	@Path("/{CodiceFattura}")
 	@GET
 	public Fattura getFatturaConCodice(@PathParam("CodiceFattura") String codice){
+		s.creaReportFattura(codice);
 		return s.leggiFatturaConCodice(codice);
 	}
 		
@@ -47,6 +48,8 @@ public class RisorsaFattura {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addFattura(Fattura f){
+		String codice=f.getCodice();
+		s.creaReportFattura(codice);
 		s.registraFattura(f);
 		return Response.status(Status.CREATED).entity(f).build();
 		
