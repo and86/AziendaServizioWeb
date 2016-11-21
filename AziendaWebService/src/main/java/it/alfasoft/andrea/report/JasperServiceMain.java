@@ -18,12 +18,11 @@ import it.alfasoft.andrea.dao.FatturaDao;
 import it.alfasoft.andrea.model.Fattura;
 import it.alfasoft.andrea.service.Servizio;
 
-public class JasperService {
+public class JasperServiceMain {
 	
 public static void main(String[] args) {
 		
 	Servizio s=new Servizio();	
-	FatturaDao fDao = new FatturaDao();
 		
 		String nomeFile="ReportFattura.pdf";
 		//metti codice fattura da concatenare e non sovraascivere
