@@ -9,10 +9,15 @@ import javax.ws.rs.core.Response;
 
 public class BustaController {
 
-	private TestInvocazioni invocazione;
+	private InvocazioneBusta invocazione;
 
 		
-	public BustaController(TestInvocazioni invocazione) {
+	
+	public BustaController() {
+		invocazione=new InvocazioneBusta();
+	}
+
+	public BustaController(InvocazioneBusta invocazione) {
 		this.invocazione = invocazione;
 	}
 

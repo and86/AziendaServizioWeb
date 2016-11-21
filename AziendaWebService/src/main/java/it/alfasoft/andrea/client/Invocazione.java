@@ -10,6 +10,7 @@ public abstract class Invocazione {
 	protected Client cliente = ClientBuilder.newClient();
 	protected WebTarget baseTarget = cliente.target("http://localhost:8081/AziendaJSF/alfasoft");
 	
+	
 
 
 

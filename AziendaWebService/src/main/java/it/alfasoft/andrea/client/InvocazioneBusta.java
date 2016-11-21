@@ -4,11 +4,11 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 
 
-public class TestInvocazioni extends Invocazione {
-	private WebTarget bustaTarget=baseTarget.path("/bustepaga");
+public class InvocazioneBusta extends Invocazione {
+	private WebTarget bustaTarget=baseTarget.path("/bustepaga/lista");
 
-	public TestInvocazioni() {
-		super();
+	public InvocazioneBusta() {
+	
 	}
 
 	public WebTarget getBustaTarget() {
