@@ -28,6 +28,13 @@
 		<property name="hbm2ddl.auto">update</property>
 		
 		<mapping class="it.alfasoft.andrea.model.Fattura" />
+		<mapping class="it.alfasoft.andrea.bean.Admin" />
+		<mapping class="it.alfasoft.andrea.bean.Cliente" />
+		<mapping class="it.alfasoft.andrea.bean.Dipendente" />
+		<mapping class="it.alfasoft.andrea.bean.Utente" />
+		<mapping class="it.alfasoft.andrea.bean.BustaPaga" />
+		<mapping class="it.alfasoft.andrea.model.Rubrica" />
+		<mapping class="it.alfasoft.andrea.model.Voce" />
 		
 	
 
