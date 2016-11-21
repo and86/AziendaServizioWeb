@@ -2,7 +2,9 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import it.alfasoft.andrea.bean.Admin;
 import it.alfasoft.andrea.model.Fattura;
+import it.alfasoft.andrea.service.Servizi;
 import it.alfasoft.andrea.service.Servizio;
 
 
@@ -11,6 +13,12 @@ public class MainProva {
 	public static void main(String[] args) {
 		
 		Servizio s=new Servizio();
+		Servizi s1=new Servizi();
+		Admin a=new Admin("and","and","and","pass",'a',"amdin");
+		s1.registraUtente(a);
+		
+	
+		
 		
 //		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 		Date d=new Date();
