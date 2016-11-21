@@ -50,7 +50,7 @@ public static void main(String[] args) {
 	      parameters.put("codiceFattura", s.leggiFatturaConCodice("aaa").getCodice());
 	      
 	      //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
-	      JasperPrint jasperPrint = JasperFillManager.fillReport("formato.jasper", parameters, new JREmptyDataSource());
+	      JasperPrint jasperPrint = JasperFillManager.fillReport("reportFattura.jasper", parameters, new JREmptyDataSource());
 
 	      //outputStream per creare PDF 
 	      OutputStream outputStream = new FileOutputStream(new File(fileFinale));
