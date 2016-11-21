@@ -1,9 +1,14 @@
 package it.alfasoft.andrea.service;
 
+
+
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import it.alfasoft.andrea.dao.FatturaDao;
 import it.alfasoft.andrea.model.Fattura;
+import it.alfasoft.andrea.utility.DataUtility;
 
 public class Servizio {
 	
@@ -24,6 +29,17 @@ public class Servizio {
 	public List<Fattura> leggiTutteFatture(){
 		return fDao.leggiTutteFatture();
 	}
+	
+	public List<Fattura> leggiFattureConData(String start,String end) throws ParseException{
+		
+		
+		Date dateInizio=DataUtility.stringToDate(start);
+		Date dateFine=DataUtility.stringToDate(end);
+		return fDao.leggiFatturaConData(dateInizio, dateFine);
+		
+	}
+	
+	
 
 	
 	//Update
