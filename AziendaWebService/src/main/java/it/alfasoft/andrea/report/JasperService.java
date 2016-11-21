@@ -27,7 +27,7 @@ public static void main(String[] args) {
 		
 		String nomeFile="ReportFattura.pdf";
 		//metti codice fattura da concatenare e non sovraascivere
-		String percorso  = "C:\\Users\\Andrea\\Desktop\\Report";
+		String percorso  = "C:\\Users\\Andrea\\Desktop\\Report\\";
 		 
 		String fileFinale=percorso+nomeFile;
 		
