@@ -129,7 +129,7 @@ public class FatturaDao {
 			tx = session.getTransaction();
 			tx.begin();
 
-			Query query = session.createQuery("From Fattura as c where c.dateAdded between :start and :end ");
+			Query query = session.createQuery("From Fattura as f where f.emissione between :start and :end ");
 			query.setDate("start", start);
 			query.setDate("end",end);
 			
