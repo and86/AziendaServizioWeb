@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 public class BustaController {
 
+	
 	private InvocazioneBusta invocazione;
 
 		
@@ -28,7 +29,8 @@ public class BustaController {
 					                     
 		List<BustaPaga> listaBuste = response
 									.readEntity(new GenericType<List<BustaPaga>>(){});
-				
+		
+		
 		return listaBuste;
 		
 	}

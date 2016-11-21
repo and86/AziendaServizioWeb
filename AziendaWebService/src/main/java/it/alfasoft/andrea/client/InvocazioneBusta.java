@@ -5,7 +5,7 @@ import javax.ws.rs.client.WebTarget;
 
 
 public class InvocazioneBusta extends Invocazione {
-	private WebTarget bustaTarget=baseTarget.path("/bustepaga/lista");
+	private WebTarget bustaTarget=baseTarget.path("/bustepaga");
 
 	public InvocazioneBusta() {
 	
@@ -20,7 +20,7 @@ public class InvocazioneBusta extends Invocazione {
 	}
 	
 	public Invocation getAllBuste(){
-		return bustaTarget.request().buildGet();
+		return bustaTarget.path("/lista").request().buildGet();
 	}
 
 }
