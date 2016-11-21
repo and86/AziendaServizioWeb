@@ -14,15 +14,16 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
 import it.alfasoft.andrea.dao.FatturaDao;
 import it.alfasoft.andrea.model.Fattura;
+import it.alfasoft.andrea.service.Servizio;
 
 public class JasperService {
 	
 public static void main(String[] args) {
 		
-		FatturaDao fDao = new FatturaDao();
+	Servizio s=new Servizio();	
+	FatturaDao fDao = new FatturaDao();
 		
 		String nomeFile="ReportFattura.pdf";
 		
@@ -32,46 +33,44 @@ public static void main(String[] args) {
 		
 		try {
 			
-		//lista con mie fatture
-        List<Fattura> fatture = fDao.leggiTutteFatture();
+			//la mia lista che mantiene i dati
+	        List<Fattura> fatture = s.leggiTutteFatture();
+				
+	      // Converto la  lista to JRBeanCollectionDataSource 
+	     // JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(fatture,false);
 			
-      // Converto la  lista to JRBeanCollectionDataSource 
-      JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(fatture,false);
-		
+				
+	      //  una mappa per mandare i parametri a Jasper 
+	      Map<String, Object> parameters = new HashMap<String, Object>();
+	    
+	      //parameters.put("FatturaDataSource", itemsJRBean);
+	      parameters.put("importo", s.leggiFatturaConCodice("aaa").getTotale());
+	      parameters.put("data", s.leggiFatturaConCodice("aaa").getEmissione());
+	      parameters.put("codiceFattura", s.leggiFatturaConCodice("aaa").getCodice());
+	      
+	      //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
+	      JasperPrint jasperPrint = JasperFillManager.fillReport("formato.jasper", parameters, new JREmptyDataSource());
+
+	      //outputStream per creare PDF 
+	      OutputStream outputStream = new FileOutputStream(new File(fileFinale));
+	     
+	      
+	      // scrivo in un  file PDF  
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+			System.out.println("il File.pdf e' stato creato");
 			
-      //  una mappa per mandare i parametri a Jasper 
-      Map<String, Object> parameters = new HashMap<String, Object>();
-    
-      parameters.put("FatturaDataSet", itemsJRBean);
-      
+			
+			
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-      //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
-      JasperPrint jasperPrint = JasperFillManager.fillReport("formato.jasper", parameters, new JREmptyDataSource());
+	       
 
-      //outputStream per creare PDF 
-      OutputStream outputStream = new FileOutputStream(new File(fileFinale));
-     
-      
-      // scrivo in un  file PDF  
-		JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
-		System.out.println("il File.pdf e' stato creato");
-		
-		
-		
-	} catch (JRException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-
-       
+		}
 
 	}
-
-}
-
-
-	
-
