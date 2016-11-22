@@ -28,6 +28,7 @@ public class RisorsaFattura {
 
 	Servizio s = new Servizio();
 
+	
 	@Path("/{CodiceFattura}")
 	@GET
 	public Fattura getFatturaConCodice(@PathParam("CodiceFattura") String codice) {
@@ -52,7 +53,9 @@ public class RisorsaFattura {
 		boolean b=s.registraFattura(f);
 		if(b==true){
 			s.creaReportFattura(f, pathJasper);
+			System.out.println("il File.pdf e' stato creato");
 		}
+		
 //		String codice = f.getCodice();
 //		s.creaReportFattura(codice);
 //		s.registraFattura(f);

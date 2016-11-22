@@ -69,7 +69,7 @@ public class Servizio {
 	
 	//Creazione Report
 	
-	public String creaReportFattura(Fattura f,String pathToJasper){
+	public void creaReportFattura(Fattura f,String pathToJasper){
 		
 //		Fattura f= fDao.leggiFatturaConCodice(codiceFattura);
 		
@@ -96,9 +96,9 @@ public class Servizio {
 			Double importo=f.getTotale();
 			Date data=f.getEmissione();
 			
-			parameters.put("importo", importo);
-			parameters.put("data", data);
-		    parameters.put("codiceFattura",codice);
+			parameters.put("totale", importo);		//"totale" è uguale al nome che ho dato nel file jrxml
+			parameters.put("emissione", data);
+		    parameters.put("codice",codice);
 			
 			
 			
@@ -110,7 +110,7 @@ public class Servizio {
 	         
 		   // scrivo in un  file PDF  
 		      JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
-		      System.out.println("il File.pdf e' stato creato");
+//		      System.out.println("il File.pdf e' stato creato");
 						      
 		
 	} catch (JRException e) {
@@ -120,7 +120,7 @@ public class Servizio {
 		
 		e.printStackTrace();
 	}
-		return fileFinale;
+//		return fileFinale;
 		
 	}
 
