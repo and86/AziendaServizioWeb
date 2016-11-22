@@ -8,11 +8,7 @@ import it.alfasoft.andrea.bean.FiltriFattura;
 import it.alfasoft.andrea.model.Fattura;
 import it.alfasoft.andrea.service.Servizio;
 
-
-
-
-
-
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,48 +17,60 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-
 @Path("fattura")
 @Produces(MediaType.APPLICATION_JSON)
 public class RisorsaFattura {
-	
-	Servizio s=new Servizio();
+
+	Servizio s = new Servizio();
 
 	@Path("/{CodiceFattura}")
 	@GET
-	public Fattura getFatturaConCodice(@PathParam("CodiceFattura") String codice){
-		s.creaReportFattura(codice);
+	public Fattura getFatturaConCodice(@PathParam("CodiceFattura") String codice) {
+//		s.creaReportFattura(codice);
 		return s.leggiFatturaConCodice(codice);
 	}
-		
+
 	@Path("/lista")
 	@GET
 	public List<Fattura> getAllFatture() {
 		return new ArrayList<Fattura>(s.leggiTutteFatture());
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addFattura(Fattura f){
-		String codice=f.getCodice();
-		s.creaReportFattura(codice);
-		s.registraFattura(f);
-		return Response.status(Status.CREATED).entity(f).build();
+	public Response addFattura(Fattura f, @Context HttpServletRequest request) {
+
+		// mettere file jasper nella cartella "webapp" e in
+		// getRealPath("percorso del file jasper,per esempio se è in qualche cartella all'interno di webapp")
+		String pathJasper=request.getServletContext().getRealPath("/fatture/jasper/Fattura.jasper");
 		
-	}
-	
-	@GET
-	@Path("/ricerca")
-//	@Produces(MediaType.TEXT_PLAIN)
-	public List<Fattura> leggiFatturaConDate(@QueryParam("dateInizio") String dateInizio,
-			 								@QueryParam("dateFine" )String dateFine) throws ParseException{
-		
-		return new ArrayList<Fattura>(s.leggiFattureConData(dateInizio, dateFine));
+		boolean b=s.registraFattura(f);
+		if(b==true){
+			s.creaReportFattura(f, pathJasper);
+		}
+//		String codice = f.getCodice();
+//		s.creaReportFattura(codice);
+//		s.registraFattura(f);
+		return Response.status(Status.CREATED).
+						entity(f).
+						build();
+
 	}
 
-	
+	@GET
+	@Path("/ricerca")
+	// @Produces(MediaType.TEXT_PLAIN)
+	public List<Fattura> leggiFatturaConDate(
+			@QueryParam("dateInizio") String dateInizio,
+			@QueryParam("dateFine") String dateFine) throws ParseException {
+
+		return new ArrayList<Fattura>(s.leggiFattureConData(dateInizio,
+				dateFine));
+	}
+
 }

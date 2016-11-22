@@ -69,15 +69,15 @@ public class Servizio {
 	
 	//Creazione Report
 	
-	public void creaReportFattura(String codiceFattura){
+	public String creaReportFattura(Fattura f,String pathToJasper){
 		
-		Fattura f= fDao.leggiFatturaConCodice(codiceFattura);
+//		Fattura f= fDao.leggiFatturaConCodice(codiceFattura);
 		
-		String codice=f.getCodice();
-		Double importo=f.getTotale();
-		Date data=f.getEmissione();
+//		String codice=f.getCodice();
+//		Double importo=f.getTotale();
+//		Date data=f.getEmissione();
 		
-		String nomeFile="ReportFattura"+codice.toUpperCase()+".pdf";
+		String nomeFile="ReportFattura"+f.getCodice().toUpperCase()+".pdf";
 		String percorso  = "C:\\Users\\Andrea\\Desktop\\Report\\";
 		
 		String fileFinale=percorso+nomeFile;
@@ -86,16 +86,28 @@ public class Servizio {
 			 
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			
-			  parameters.put("importo", importo);
-		      parameters.put("data", data);
-		      parameters.put("codiceFattura",codice);
-		      
+//			  parameters.put("importo", importo);
+//		      parameters.put("data", data);
+//		      parameters.put("codiceFattura",codice);
+			
+			Fattura f2= fDao.leggiFatturaConCodice(f.getCodice());
+			
+			String codice=f.getCodice();
+			Double importo=f.getTotale();
+			Date data=f.getEmissione();
+			
+			parameters.put("importo", importo);
+			parameters.put("data", data);
+		    parameters.put("codiceFattura",codice);
+			
+			
+			
 		      //  file compilato di jasper (.jasper) di Jasper Report per creare  PDF 
-		      JasperPrint jasperPrint = JasperFillManager.fillReport("reportFattura.jasper", parameters, new JREmptyDataSource());
+		      JasperPrint jasperPrint = JasperFillManager.fillReport(pathToJasper, parameters, new JREmptyDataSource());
 
-		      //outputStream per creare PDF 
-		      OutputStream outputStream = new FileOutputStream(new File(fileFinale));
-		     
+		    //outputStream per creare PDF 
+	          OutputStream outputStream = new FileOutputStream(new File(fileFinale));
+	         
 		   // scrivo in un  file PDF  
 		      JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
 		      System.out.println("il File.pdf e' stato creato");
@@ -108,6 +120,7 @@ public class Servizio {
 		
 		e.printStackTrace();
 	}
+		return fileFinale;
 		
 	}
 
