@@ -97,6 +97,8 @@ public class Servizio {
 			Date data=f.getEmissione();
 			
 			parameters.put("totale", importo);		//"totale" è uguale al nome che ho dato nel file jrxml
+			
+			
 			parameters.put("emissione", data);
 		    parameters.put("codice",codice);
 			

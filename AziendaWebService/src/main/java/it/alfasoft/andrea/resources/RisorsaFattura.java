@@ -22,7 +22,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-@Path("fattura")
+@Path("fatture")
 @Produces(MediaType.APPLICATION_JSON)
 public class RisorsaFattura {
 
@@ -36,8 +36,9 @@ public class RisorsaFattura {
 		return s.leggiFatturaConCodice(codice);
 	}
 
-	@Path("/lista")
+//	@Path("/lista")
 	@GET
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_SVG_XML})
 	public List<Fattura> getAllFatture() {
 		return new ArrayList<Fattura>(s.leggiTutteFatture());
 	}
