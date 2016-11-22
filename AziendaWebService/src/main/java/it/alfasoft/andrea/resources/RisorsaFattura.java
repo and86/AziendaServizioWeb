@@ -4,15 +4,16 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.alfasoft.andrea.bean.FiltriFattura;
+
 import it.alfasoft.andrea.model.Fattura;
 import it.alfasoft.andrea.service.Servizio;
 
+
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,7 +39,7 @@ public class RisorsaFattura {
 
 //	@Path("/lista")
 	@GET
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_SVG_XML})
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public List<Fattura> getAllFatture() {
 		return new ArrayList<Fattura>(s.leggiTutteFatture());
 	}
@@ -76,5 +77,14 @@ public class RisorsaFattura {
 		return new ArrayList<Fattura>(s.leggiFattureConData(dateInizio,
 				dateFine));
 	}
+	
+	@PUT
+	public void updateFattura(Fattura f){
+		s.aggiornaFattura(f);
+		
+		}
+	
 
 }
+
+
