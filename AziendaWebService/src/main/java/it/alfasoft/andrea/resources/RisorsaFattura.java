@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import it.alfasoft.andrea.model.Fattura;
 import it.alfasoft.andrea.service.Servizio;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -83,6 +84,14 @@ public class RisorsaFattura {
 		s.aggiornaFattura(f);
 		
 		}
+	
+	@Path("/{codiceFattura}")
+	@DELETE
+	public void deleteDipendente(@PathParam("codiceFattura") String codice){
+		
+		s.eliminaFatturaConCodice(codice);
+		
+	}
 	
 
 }
