@@ -51,13 +51,44 @@ public class Servizio {
 	}
 	
 	
+	public Fattura leggiFatturaConId(long id) {
+		return fDao.leggiFatturaConId(id);	
+	}
 
 	
+//	//Update
+//	public boolean aggiornaFattura(Fattura f) {
+//		
+//		Date data=f.getEmissione();
+//		String codice=f.getCodice();
+//		Double importo=f.getTotale();
+//		
+//		Fattura f1=this.leggiFatturaConId(f.getId_fattura());
+//		
+//		f1.setCodice(codice);
+//		f1.setEmissione(data);
+//		f1.setTotale(importo);
+//				
+////		fDao.leggiFatturaConId(f.getId_fattura());
+//		return fDao.aggiornaFattura(f1);
+//	}
+	
 	//Update
-	public boolean aggiornaFattura(Fattura f) {
-		fDao.leggiFatturaConId(f.getId_fattura());
-		return fDao.aggiornaFattura(f);
-	}
+		public boolean aggiornaFattura(Fattura f) {
+			
+			
+			
+			Fattura f1=fDao.leggiFatturaConId(f.getId_fattura());
+			
+			if(f1!=null){
+				f1.setCodice(f.getCodice());
+				f1.setEmissione(f.getEmissione());
+				f1.setTotale(f.getTotale());
+			}
+								
+//			fDao.leggiFatturaConId(f.getId_fattura());
+			return fDao.aggiornaFattura(f1);
+		}
 	
 	//Delete
 	public boolean eliminaFatturaConCodice(String codice){
