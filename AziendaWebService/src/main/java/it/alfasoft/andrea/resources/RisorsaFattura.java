@@ -47,7 +47,7 @@ public class RisorsaFattura {
 
 		// mettere file jasper nella cartella "webapp" e in
 		// getRealPath("percorso del file jasper,per esempio se è in qualche cartella all'interno di webapp")
-		String pathJasper=request.getServletContext().getRealPath("/fatture/jasper/Fattura.jasper");
+		String pathJasper=request.getServletContext().getRealPath("/fatture/jasper/reportFattura.jasper");
 		
 		boolean b=s.registraFattura(f);
 		if(b==true){
